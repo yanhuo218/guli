@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yanhuo.serviceedu.mapper.EduCourseMapper">
+    <select id="getPublishCourseInfo" resultType="com.yanhuo.serviceedu.entity.vo.CoursePublishVo">
+        SELECT ec.id,
+               ec.title,
+               ec.cover,
+               ec.price,
+               ec.lesson_num AS lessonNum,
+               et.name       AS teacherName,
+               sub1.title    AS subjectLevelOne,
+               sub2.title    AS subjectLevelTwo
+        FROM edu_course ec
+                 LEFT JOIN edu_course_description ecd on ec.id = ecd.id
+                 LEFT JOIN edu_teacher et on ec.teacher_id = et.id
+                 LEFT JOIN edu_subject sub1 on ec.subject_parent_id = sub1.id
+                 LEFT JOIN edu_subject sub2 on ec.subject_id = sub2.id
+        WHERE ec.id = #{id}
+    </select>
+</mapper>

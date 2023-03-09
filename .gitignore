@@ -1,0 +1,7 @@
+/.idea/
+/common/common_utils/target/
+/common/service-base/target/
+/service/service_cms/target/
+/service/service_cos/target/
+/service/service_edu/target/
+/service/service_ucenter/target/
